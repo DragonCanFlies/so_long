@@ -6,7 +6,7 @@
 /*   By: latabagl <latabagl@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 19:13:01 by latabagl          #+#    #+#             */
-/*   Updated: 2025/08/05 17:50:31 by latabagl         ###   ########.fr       */
+/*   Updated: 2025/08/05 21:16:57 by latabagl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 
 void    play_game(void)
 {
-    ft_printf("What a game !");
+    ft_printf("What a game !\n");
 }
 
 int     is_map_valid(char *map)
