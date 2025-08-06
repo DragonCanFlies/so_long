@@ -6,28 +6,25 @@
 /*   By: latabagl <latabagl@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 19:13:01 by latabagl          #+#    #+#             */
-/*   Updated: 2025/08/05 21:16:57 by latabagl         ###   ########.fr       */
+/*   Updated: 2025/08/06 23:30:39 by latabagl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 void    play_game(void);
-int     is_map_valid(char *map);
 
+// free memory !!!
 int main(int argc, char **argv)
 {
-    char *map;
+    t_map   map;
 
     if (argc != 2)
     {
         return (1);
     }
-    map = argv[1];
-    if (!is_map_valid(map))
-    {
-        return (1);
-    }
+    map.grid = NULL;
+    check_map(argv[1], &map);
     play_game();
     return (0);
 }
@@ -35,10 +32,4 @@ int main(int argc, char **argv)
 void    play_game(void)
 {
     ft_printf("What a game !\n");
-}
-
-int     is_map_valid(char *map)
-{
-    (void) map;
-    return (1);
 }
