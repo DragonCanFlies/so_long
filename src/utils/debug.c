@@ -6,7 +6,7 @@
 /*   By: latabagl <latabagl@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 13:49:47 by latabagl          #+#    #+#             */
-/*   Updated: 2025/08/06 23:36:38 by latabagl         ###   ########.fr       */
+/*   Updated: 2025/08/18 17:06:33 by latabagl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	print_map(t_map *map)
 
 	while (map->grid[i])
 	{
-		ft_printf("%s", map->grid[i]);
+		ft_printf("%s\n", map->grid[i]);
 		i++;
 	}
 }
