@@ -6,7 +6,7 @@
 /*   By: latabagl <latabagl@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 11:25:16 by latabagl          #+#    #+#             */
-/*   Updated: 2025/08/18 23:11:33 by latabagl         ###   ########.fr       */
+/*   Updated: 2025/08/22 16:37:14 by latabagl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,12 @@ static char	*error_messages[] = {
 	"Memory allocation failure.",
 	"Map must have minimum 3 rows and 3 cols.",
 	"Map must be rectangular.",
-	"Map characters must be P, C, E, 0 and 1."
+	"Map characters must be P, C, E, 0 and 1.",
+	"There must be one player.",
+	"There must be one exit.",
+	"There must be collectibles.",
+	"The map must be enclosed by walls.",
+	"The player can't reach exit or collect all collectibles."
 };
 
 // error handling
@@ -58,4 +63,12 @@ void	remove_grid_newlines(char **grid)
 		grid_walker++;
 	}
 	return ;
+}
+
+int	is_border(int row, int col, t_map *map)
+{
+	return (row == 0 ||
+			col == 0 ||
+			row == map->rows - 1 ||
+			col == map->cols - 1);
 }

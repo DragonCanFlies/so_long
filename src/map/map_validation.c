@@ -6,7 +6,7 @@
 /*   By: latabagl <latabagl@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 16:07:56 by latabagl          #+#    #+#             */
-/*   Updated: 2025/08/18 23:12:11 by latabagl         ###   ########.fr       */
+/*   Updated: 2025/08/22 13:41:36 by latabagl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,19 +52,26 @@ void	valid_characters(t_map *map)
 	map->player = 0;
 	map->exit = 0;
 	map->collectibles = 0;
+	i = 0;
 	while (map->grid[i])
 	{
 		j = 0;
 		while(map->grid[i][j])
 		{
-			count_and_valid_characters(map->grid[i][j], map);
+			count_and_validate_characters(map->grid[i][j], map);
 			j++;
 		}
 		i++;
 	}
+	if (map->player != 1)
+		handle_error(-1, ONE_PLAYER);
+	else if (map->exit != 1)
+		handle_error(-1, ONE_EXIT);
+	else if (map->collectibles == 0)
+		handle_error(-1, NO_COLLECTIBLE);
 }
 
-void	count_and_valid_characters(char c, t_map *map)
+void	count_and_validate_characters(char c, t_map *map)
 {
 	if (c == 'P')
 		map->player++;
@@ -78,6 +85,22 @@ void	count_and_valid_characters(char c, t_map *map)
 		handle_error(-1, INVALID_CHARACTER);
 }
 
-// enclosed by walls
+void	is_enclosed_by_walls(t_map *map)
+{
+	int	col;
+	int	row;
 
-// valid path
+	row = 0;
+	while (map->grid[row])
+	{
+		col = 0;
+		while (map->grid[row][col])
+		{
+			if (is_border(row, col, map) && 
+				map->grid[row][col] != '1')
+					handle_error(-1, WALL_PROBLEM);
+			col++;
+		}
+		row++;
+	}
+}

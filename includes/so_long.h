@@ -6,7 +6,7 @@
 /*   By: latabagl <latabagl@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 19:13:14 by latabagl          #+#    #+#             */
-/*   Updated: 2025/08/18 20:02:34 by latabagl         ###   ########.fr       */
+/*   Updated: 2025/08/22 16:38:25 by latabagl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,12 @@ typedef enum e_error
     MALLOC_ERR,
     MAP_TOO_SMALL,
     MAP_NOT_RECTANGULAR,
-    INVALID_CHARACTER
+    INVALID_CHARACTER,
+    ONE_PLAYER,
+    ONE_EXIT,
+    NO_COLLECTIBLE,
+    WALL_PROBLEM,
+    INVALID_PATH
 }            t_error;
 
 void    check_map(char *filename, t_map *map);
@@ -56,9 +61,16 @@ void	remove_grid_newlines(char **grid);
 void	is_map_rectangular(t_map *map);
 void	count_cols(t_map *map);
 void	valid_characters(t_map *map);
-void	count_and_valid_characters(char c, t_map *map);
+void	count_and_validate_characters(char c, t_map *map);
+void	is_enclosed_by_walls(t_map *map);
+int	    is_border(int row, int col, t_map *map);
+void	is_path_valid(t_map *map);
+void	get_player_pos(int *x, int *y, t_map *map);
+void	fill_grid(char **grid, int x, int y, int cols, int rows);
+char	**cpy_grid(char **grid, int rows);
+void	check_path(char **grid_cpy, t_map *map);
 
 // debug to be erased
-void	print_map(t_map *map);
+void	print_map(char **grid);
 
 #endif

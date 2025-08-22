@@ -6,7 +6,7 @@
 /*   By: latabagl <latabagl@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 20:55:15 by latabagl          #+#    #+#             */
-/*   Updated: 2025/08/18 20:02:02 by latabagl         ###   ########.fr       */
+/*   Updated: 2025/08/22 15:16:20 by latabagl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ void	check_map(char *filename, t_map *map)
 	count_rows(map, filename);
 	read_map(map, filename);
 	remove_grid_newlines(map->grid);
-	print_map(map);
+	//print_map(map);
 	is_map_rectangular(map);
 	valid_characters(map);
+	is_enclosed_by_walls(map);
+	is_path_valid(map);
 }
 
 // check file extension is .ber

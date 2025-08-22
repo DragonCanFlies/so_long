@@ -6,7 +6,7 @@
 #    By: latabagl <latabagl@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/02 19:13:19 by latabagl          #+#    #+#              #
-#    Updated: 2025/08/18 16:08:21 by latabagl         ###   ########.fr        #
+#    Updated: 2025/08/22 13:15:19 by latabagl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = cc
 FLAGS = -Wall -Wextra -Werror -g
 HEADER = includes/so_long.h
 SRC = src/main.c src/map/map_parser.c src/utils/so_long_utils.c \
-	  src/utils/debug.c src/map/map_validation.c
+	  src/utils/debug.c src/map/map_validation.c src/map/map_validation2.c
 SRC_DIR = src
 OBJ_DIR = obj
 OBJECTS = $(SRC:src/%.c=obj/%.o)

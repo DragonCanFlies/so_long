@@ -6,19 +6,20 @@
 /*   By: latabagl <latabagl@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 13:49:47 by latabagl          #+#    #+#             */
-/*   Updated: 2025/08/18 17:06:33 by latabagl         ###   ########.fr       */
+/*   Updated: 2025/08/22 16:24:36 by latabagl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	print_map(t_map *map)
+void	print_map(char **grid)
 {
 	unsigned int	i;
 
-	while (map->grid[i])
+	i = 0;
+	while (grid[i])
 	{
-		ft_printf("%s\n", map->grid[i]);
+		ft_printf("%s\n", grid[i]);
 		i++;
 	}
 }
