@@ -6,21 +6,19 @@
 /*   By: latabagl <latabagl@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 20:55:15 by latabagl          #+#    #+#             */
-/*   Updated: 2025/08/22 15:16:20 by latabagl         ###   ########.fr       */
+/*   Updated: 2025/08/24 19:21:34 by latabagl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// return TRUE if map is valid
 void	check_map(char *filename, t_map *map)
 {
 	if (!is_filename_valid(filename))
-		handle_error(-1, INVALID_FILENAME); 
+		handle_error(-1, INVALID_FILENAME, map->grid); 
 	count_rows(map, filename);
 	read_map(map, filename);
 	remove_grid_newlines(map->grid);
-	//print_map(map);
 	is_map_rectangular(map);
 	valid_characters(map);
 	is_enclosed_by_walls(map);
@@ -50,10 +48,10 @@ void	read_map(t_map *map, char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		handle_error(-1, OPEN_MAP);
+		handle_error(-1, OPEN_MAP, map->grid);
 	map->grid = malloc((map->rows + 1) * sizeof(char *));
 	if (!map->grid)
-		handle_error(fd, MALLOC_ERR);
+		handle_error(fd, MALLOC_ERR, map->grid);
 	i = 0;
 	line = get_next_line(fd);
 	while (line)
@@ -73,7 +71,7 @@ void	count_rows(t_map *map, char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		handle_error(-1, OPEN_MAP);
+		handle_error(-1, OPEN_MAP, map->grid);
 	rows = 0;
 	line = get_next_line(fd);
 	while (line)

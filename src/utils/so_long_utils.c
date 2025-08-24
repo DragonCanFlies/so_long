@@ -6,7 +6,7 @@
 /*   By: latabagl <latabagl@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 11:25:16 by latabagl          #+#    #+#             */
-/*   Updated: 2025/08/22 16:37:14 by latabagl         ###   ########.fr       */
+/*   Updated: 2025/08/24 16:06:07 by latabagl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ static char	*error_messages[] = {
 };
 
 // error handling
-void	handle_error(int fd, int error)
+void	handle_error(int fd, int error, char **grid)
 {
-	free_memory();
+	free_memory(grid);
 	if (fd != -1)
 		close (fd);
 	print_error_message(error);
@@ -44,9 +44,17 @@ void	print_error_message(int error)
 }
 
 // free memory
-void	free_memory(void)
+void	free_memory(char **grid)
 {
-	ft_printf("free memory\n");
+	int	i;
+
+	i = 0;
+	while (grid[i])
+	{
+		free(grid[i]);
+		i++;
+	}
+	free(grid);
 }
 
 void	remove_grid_newlines(char **grid)

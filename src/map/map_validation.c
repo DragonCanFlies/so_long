@@ -6,7 +6,7 @@
 /*   By: latabagl <latabagl@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 16:07:56 by latabagl          #+#    #+#             */
-/*   Updated: 2025/08/22 13:41:36 by latabagl         ###   ########.fr       */
+/*   Updated: 2025/08/24 16:08:16 by latabagl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ void	is_map_rectangular(t_map *map)
 	int	i;
 
 	if (map->rows < 3)
-		handle_error(-1, MAP_TOO_SMALL);
+		handle_error(-1, MAP_TOO_SMALL, map->grid);
 	count_cols(map);
 	if (map->cols < 3)
-		handle_error(-1, MAP_TOO_SMALL);
+		handle_error(-1, MAP_TOO_SMALL, map->grid);
 	i = 0;
 	while (map->grid[i])
 	{
 		if ((int)ft_strlen(map->grid[i]) != map->cols)
-			handle_error(-1, MAP_NOT_RECTANGULAR);
+			handle_error(-1, MAP_NOT_RECTANGULAR, map->grid);
 		i++;
 	}
 }
@@ -64,11 +64,11 @@ void	valid_characters(t_map *map)
 		i++;
 	}
 	if (map->player != 1)
-		handle_error(-1, ONE_PLAYER);
+		handle_error(-1, ONE_PLAYER, map->grid);
 	else if (map->exit != 1)
-		handle_error(-1, ONE_EXIT);
+		handle_error(-1, ONE_EXIT, map->grid);
 	else if (map->collectibles == 0)
-		handle_error(-1, NO_COLLECTIBLE);
+		handle_error(-1, NO_COLLECTIBLE, map->grid);
 }
 
 void	count_and_validate_characters(char c, t_map *map)
@@ -82,7 +82,7 @@ void	count_and_validate_characters(char c, t_map *map)
 	else if (c == '1' || c == '0')
 		;
 	else
-		handle_error(-1, INVALID_CHARACTER);
+		handle_error(-1, INVALID_CHARACTER, map->grid);
 }
 
 void	is_enclosed_by_walls(t_map *map)
@@ -98,7 +98,7 @@ void	is_enclosed_by_walls(t_map *map)
 		{
 			if (is_border(row, col, map) && 
 				map->grid[row][col] != '1')
-					handle_error(-1, WALL_PROBLEM);
+					handle_error(-1, WALL_PROBLEM, map->grid);
 			col++;
 		}
 		row++;

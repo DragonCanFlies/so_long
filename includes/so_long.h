@@ -6,7 +6,7 @@
 /*   By: latabagl <latabagl@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 19:13:14 by latabagl          #+#    #+#             */
-/*   Updated: 2025/08/22 16:38:25 by latabagl         ###   ########.fr       */
+/*   Updated: 2025/08/24 16:07:07 by latabagl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ int	    is_filename_valid(char *filename);
 void	read_map(t_map *map, char *filename);
 void	count_rows(t_map *map, char *filename);
 
-void	handle_error(int fd, int error);
+void	handle_error(int fd, int error, char **grid);
 void	print_error_message(int error);
-void	free_memory(void);
+void	free_memory(char **grid);
 void	remove_grid_newlines(char **grid);
 
 void	is_map_rectangular(t_map *map);

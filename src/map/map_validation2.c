@@ -6,7 +6,7 @@
 /*   By: latabagl <latabagl@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:14:46 by latabagl          #+#    #+#             */
-/*   Updated: 2025/08/22 16:46:48 by latabagl         ###   ########.fr       */
+/*   Updated: 2025/08/24 16:10:09 by latabagl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ void	is_path_valid(t_map *map)
 	grid_cpy = cpy_grid(map->grid, map->rows);
 	fill_grid(grid_cpy, x, y, map->cols, map->rows);
 	check_path(grid_cpy, map);
-	
-	// free the copy
+	free_memory(grid_cpy);
 }
 
 void	get_player_pos(int *x, int *y, t_map *map)
@@ -105,6 +104,6 @@ void	check_path(char **grid_cpy, t_map *map)
 		row++;
 	}
 	if (!reachable_exit || reachable_collectibles != map->collectibles)
-		handle_error(-1, INVALID_PATH);
+		handle_error(-1, INVALID_PATH, map->grid);
 }
 

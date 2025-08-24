@@ -1,35 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   so_long_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: latabagl <latabagl@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/02 19:13:01 by latabagl          #+#    #+#             */
-/*   Updated: 2025/08/24 16:12:14 by latabagl         ###   ########.fr       */
+/*   Created: 2025/08/24 15:42:07 by latabagl          #+#    #+#             */
+/*   Updated: 2025/08/24 15:42:15 by latabagl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void    play_game(void);
-
-int main(int argc, char **argv)
-{
-    t_map   map;
-
-    if (argc != 2)
-    {
-        return (1);
-    }
-    map.grid = NULL;
-    check_map(argv[1], &map);
-    play_game();
-    free_memory(map.grid);
-    return (0);
-}
-
-void    play_game(void)
-{
-    ft_printf("What a game !\n");
-}
